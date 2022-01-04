@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+         <!-- Vue.js CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    </head>
+    <body>
+        <div class="bg-main">
+            <div id="app" class="container col-8 d-flex justify-content-center align-items-center flex-column p-2">
+                <div class="col d-flex justify-content-center align-items-center flex-column mt-5 p-3">
+                    <p class="h1">Calculation App</p>
+                    <p class="h5">This app calculate your input number from right.</p>
+                    <p class="h6">このアプリは左から計算する仕組みになっています。</p>
+                </div>
+                <div class="col d-flex justify-content-center align-items-center flex-column text-gray p-2 rounded">
+                    <div class="col d-flex justify-content-center align-items-center flex-wrap mt-2 border-bottom bg-gray">
+                        <p class="col-2 h2 text-success">CAL</p>
+                        <p class="col-10 h2"> {{ calNum }}</p>
+                    </div>
+                    <div class="col d-flex justify-content-center align-items-center flex-wrap mt-2 border-bottom mt-4 bg-gray">
+                        <p class="col-2 h2 text-danger">SUM</p>
+                        <p class="col-10 h2">{{sumNum}}</p>
+                    </div>
+                    
+                </div>
+                <div class="col d-flex justify-content-center align-items-center flex-wrap mt-5">
+                    <div class="button-height col d-flex justify-content-center align-items-center flex-wrap">
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('7')" class="btn btn-dark d-flex justify-content-center align-content-center col">7</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('8')" class="btn btn-dark d-flex justify-content-center align-content-center col">8</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('9')" class="btn btn-dark d-flex justify-content-center align-content-center col">9</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('+')" class="btn btn-warning d-flex justify-content-center align-content-center col-10">+</p>
+                            </div>
+                        </div>
+
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('4')" class="btn btn-dark d-flex justify-content-center align-content-center col">4</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('5')" class="btn btn-dark d-flex justify-content-center align-content-center col">5</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('6')" class="btn btn-dark d-flex justify-content-center align-content-center col">6</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('-')" class="btn btn-warning d-flex justify-content-center align-content-center col-10">-</p>
+                            </div>
+                        </div>
+
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('1')" class="btn btn-dark d-flex justify-content-center align-content-center col">1</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('2')" class="btn btn-dark d-flex justify-content-center align-content-center col">2</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('3')" class="btn btn-dark d-flex justify-content-center align-content-center col">3</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('*')" class="btn btn-warning d-flex justify-content-center align-content-center col-10">*</p>
+                            </div>
+                        </div>
+
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('0')" class="btn btn-dark d-flex justify-content-center align-content-center col">0</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="clearString" class="btn btn-danger d-flex justify-content-center align-content-center col">C</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="sumString" class="btn btn-success d-flex justify-content-center align-content-center col">=</p>
+                            </div>
+                        </div>
+                        <div class="col-3 p-1">
+                            <div class="col p-2 rounded-circle d-flex justify-content-center align-items-center">
+                                <button v-on:click="checkInput('/')" class="btn btn-warning d-flex justify-content-center align-content-center col-10">/</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                <div class="mt-5 h3">
+                    <p>History Data</p>
+                </div>
+                <div v-for="(result, index) in historyData" class="col d-flex justify-content-center align-items-center flex-wrap">
+                    <div class="col-11 d-flex justify-content-center align-items-center flex-wrap mt-2 border-bottom bg-gray">
+                        <p class="col-2 h2 text-warning">{{index + 1}}</p>
+                        <p class="col-8 h2">{{result}}</p>
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-outline-warning" v-on:click="deleteHistoryData(index)">delete</button>
+                    </div>
+                </div>
+                <div class="mt-5 h3">
+                    <button class="btn btn-warning">download</button>
+                </div>
+
+            
+            </div>
+
+        </div>
+
+    </body>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                calNum:"",
+                sumNum:"",
+                historyData:[],
+                number:["0","1","2","3","4","5","6","7","8","9"],
+            },
+            methods:{
+                checkInput:(data)=>{
+                    
+                    if(app.calNum === ""){
+                        app.sumNum = ""
+                        return app.calNum = data
+                    }
+
+                    if(app.calNum !== "" && app.sumNum !== ''){
+                        app.calNum = ''
+                        app.sumNum = ''
+                    }
+
+                    let lastString = app.calNum.slice(-1)
+                    // console.log(lastString)
+
+                    if(data === "+" || data === "-" || data === "*" || data === "/"){
+                        if(app.calNum === "" || lastString === "+" || lastString === "-" || lastString === "*" || lastString === "*"){
+                            return alert("You need to input Number")
+                        }else{
+                            return app.calNum += data;
+                        }
+                        
+                    }else if(data in app.number){
+                            return app.calNum += data;
+                    }
+                    else{
+                        return alert("Data which was inputed don't find value.")
+                    }
+                    console.log(app.calNum)
+                    // console.log(data)
+                    // console.log(app.calNum)
+                    // app.calNum += data;
+                },
+                clearString:()=>{
+                    app.calNum = ''
+                    app.sumNum = ''
+                },
+                sumString:()=>{
+
+                    if(app.calNum[app.calNum.length-1] in app.number === false){
+                        return alert("You need to input Number")
+                    }
+                    
+                    if(app.calNum[0] === "+" || app.calNum[0] === "-" || app.calNum[0] === "*" || app.calNum[0] === "/"){
+                        app.calNum = '';
+                        return app.sumNum = "None"
+                    }
+                    
+
+                    if(app.calNum.indexOf("+") !== -1 || app.calNum.indexOf("-") !== -1 || app.calNum.indexOf("*") !== -1 || app.calNum.indexOf("/") !== -1){
+                        
+                        // initial operation
+                        let operaterList = ['+'];
+                        let operationList = [];
+                        let operationStr = '';
+
+                        for(i = 0; i < app.calNum.length; i++){
+                            if(app.calNum[i] in app.number){
+                                operationStr += app.calNum[i];
+
+        
+                                if(i === app.calNum.length-1){
+                                    operationList.push(operationStr)
+                                }
+                            }else{
+                                if(operationStr !== ''){
+                                    operationList.push(operationStr);
+                                    operationStr = ''
+                                }  
+                                operaterList.push(app.calNum[i]);
+    
+
+
+                            }
+                        }
+
+                        console.log(operationList);
+                        console.log(operaterList);
+                        
+                        let total  = 0;
+                        for(i = 0 ; i < operationList.length ; i++){
+                            if(operaterList[i] === "+"){
+                                total += parseInt(operationList[i]);
+                                
+                            }else if(operaterList[i] === "-"){
+                                total -= parseInt(operationList[i]);
+                            }else if(operaterList[i] === "*"){
+                                total *= parseInt(operationList[i]);
+                            }else if (operaterList[i] === "/"){
+                                total /= parseInt(operationList[i])
+                                
+                            };
+                        }
+                        app.sumNum = total
+                        return app.historyData.push(app.calNum.toString() + " = " + total.toString())
+
+                        // return displayHistoryData(app.historyData)
+                        
+
+                    }else{
+                        return app.sumNum = app.calNum
+                    }
+
+    
+
+                },
+                deleteHistoryData:(index)=>{
+                    app.historyData.splice(index,1)
+                },
+            }
+        })
+    </script>
+</html>

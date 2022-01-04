@@ -1,0 +1,27 @@
+.bg-main{
+    background-color: #313031;
+    width:100%;
+    height:100vh;
+}
+
+.bg-main p{
+    color:white;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+
+.bg-gray p{
+    font-size: 1cm;
+}
+
+.text-gray{
+    color:#313031
+}
+
+.button-height button{
+    height: 2cm;
+    font-size: 1cm;
+}
